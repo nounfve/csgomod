@@ -2157,9 +2157,9 @@ public Action LoadConfigWarmup(client, cfg)
 {
 	ServerCommand("mp_ct_default_secondary weapon_hkp2000");
 	ServerCommand("mp_t_default_secondary weapon_glock");
-	ServerCommand("ammo_grenade_limit_default 0");
-	ServerCommand("ammo_grenade_limit_flashbang 0");
-	ServerCommand("ammo_grenade_limit_total 0");
+	ServerCommand("ammo_grenade_limit_default 1");
+	ServerCommand("ammo_grenade_limit_flashbang 2");
+	ServerCommand("ammo_grenade_limit_total 8");
 	ServerCommand("bot_quota 0");
 	ServerCommand("cash_player_bomb_defused 300");
 	ServerCommand("cash_player_bomb_planted 300");
