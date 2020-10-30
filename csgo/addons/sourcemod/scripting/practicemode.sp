@@ -703,7 +703,6 @@ public void OnPluginStart() {
 
 public void OnPluginEnd() {
   OnMapEnd();
-  ServerCommand("mp_restartgame 1");
 }
 
 public void OnLibraryAdded(const char[] name) {
@@ -1270,6 +1269,7 @@ public void ExitPracticeMode() {
 
   ServerCommand("exec sourcemod/practicemode_end.cfg");
   PM_MessageToAll("Practice mode is now disabled.");
+  ServerCommand("mp_restartgame 1");
 }
 
 public Action Timer_GivePlayersMoney(Handle timer) {
