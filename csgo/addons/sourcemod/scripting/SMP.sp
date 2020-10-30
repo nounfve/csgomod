@@ -369,7 +369,7 @@ public Action Join_Team(client, const char[] command, args)
 		{
 			if (target == SPEC || target == NONE)
 			{
-				return Plugin_Handled;
+				return Plugin_Continue;
 			}
 		}
 		else if (CurrentRound == KNIFE_ROUND || CurrentRound == MATCH)
