@@ -703,6 +703,7 @@ public void OnPluginStart() {
 
 public void OnPluginEnd() {
   OnMapEnd();
+  ServerCommand("mp_restartgame 1");
 }
 
 public void OnLibraryAdded(const char[] name) {
