@@ -236,7 +236,9 @@ public void OnPluginStart()
 	HookEvent("player_hurt", Event_PlayerHurt, EventHookMode_Pre);
 	HookEvent("server_cvar", Event_ServerCvar, EventHookMode_Pre);
 	HookEvent("player_death", Event_PlayerDeath);
-	MoneyOffset = FindSendPropOffs("CCSPlayer", "m_iAccount");
+	MoneyOffset = FindSendPropInfo("CCSPlayer", "m_iAccount");
+	//MoneyOffset = FindSendPropOffs("CCSPlayer", "m_iAccount");
+	//FindSendPropInfo("CCSPlayer", "m_iAccount",PropField_Integer,null,&MoneyOffset);
 	
 	PlayersReadyList = CreateArray(40);
 	
@@ -437,7 +439,7 @@ public MenuHandler_SetTeamMenu(Handle menu, MenuAction action, param1, param2)
 			char buffer[255];
 			Format(buffer, sizeof(buffer), "%T", "Set Team Menu", param1);
 			
-			Handle panel = view_as<Handle>param2;
+			Handle panel = view_as<Handle>(param2);
 			SetPanelTitle(panel, buffer);
 		}
 		
@@ -478,7 +480,7 @@ public MenuHandler_SetTeamMenu_TeamSelect(Handle menu, MenuAction action, param1
 			char buffer[255];
 			Format(buffer, sizeof(buffer), "%T", "Set Team Select Menu", param1);
 			
-			Handle panel = view_as<Handle>param2;
+			Handle panel = view_as<Handle>(param2);
 			SetPanelTitle(panel, buffer);
 		}
 		
@@ -565,7 +567,7 @@ public MenuHandler_SpecMenu(Handle menu, MenuAction action, param1, param2)
 			char buffer[255];
 			Format(buffer, sizeof(buffer), "%T", "Spec Menu", param1);
 			
-			Handle panel = view_as<Handle>param2;
+			Handle panel = view_as<Handle>(param2);
 			SetPanelTitle(panel, buffer);
 			
 		}
@@ -654,7 +656,7 @@ public MenuHandler_ChooseCaptain_Question(Handle menu, MenuAction action, param1
 			char buffer[255];
 			Format(buffer, sizeof(buffer), "%T", "Manual Captain Question", param1);
 			
-			Handle panel = view_as<Handle>param2;
+			Handle panel = view_as<Handle>(param2);
 			SetPanelTitle(panel, buffer);
 		}
 		
@@ -699,7 +701,7 @@ public MenuHandler_ChooseCaptain_CT(Handle menu, MenuAction action, param1, para
 			char buffer[255];
 			Format(buffer, sizeof(buffer), "%T", "Manual Captain Selection CT", param1);
 			
-			Handle panel = view_as<Handle>param2;
+			Handle panel = view_as<Handle>(param2);
 			SetPanelTitle(panel, buffer);
 		}
 		
@@ -735,7 +737,7 @@ public MenuHandler_ChooseCaptain_T(Handle menu, MenuAction action, param1, param
 			char buffer[255];
 			Format(buffer, sizeof(buffer), "%T", "Manual Captain Selection T", param1);
 			
-			Handle panel = view_as<Handle>param2;
+			Handle panel = view_as<Handle>(param2);
 			SetPanelTitle(panel, buffer);
 		}
 		
@@ -985,7 +987,7 @@ public AdminMenuHandlerSMP(Handle menu, MenuAction action, param1, param2)
 			char buffer[255];
 			Format(buffer, sizeof(buffer), "%T", "SMP Admin Menu", param1);
 			
-			Handle panel = view_as<Handle>param2;
+			Handle panel = view_as<Handle>(param2);
 			SetPanelTitle(panel, buffer);
 		}
 		
@@ -1583,6 +1585,7 @@ SwapPlayer(client, target)
 		default:
 		return;
 	}
+	int client__=client;
 }
 //Code by X@IDER
 public Action Command_Swap(client, args)
@@ -1634,7 +1637,7 @@ public MenuHandler_SwapMenu(Handle menu, MenuAction action, param1, param2)
 			char buffer[255];
 			Format(buffer, sizeof(buffer), "%T", "Swap Menu", param1);
 			
-			Handle panel = view_as<Handle>param2;
+			Handle panel = view_as<Handle>(param2);
 			SetPanelTitle(panel, buffer);
 		}
 		
@@ -1718,7 +1721,7 @@ public MenuHandler_ExchangePlayersMenu(Handle menu, MenuAction action, param1, p
 			char buffer[255];
 			Format(buffer, sizeof(buffer), "%T", "Exchange Players Menu", param1);
 			
-			Handle panel = view_as<Handle>param2;
+			Handle panel = view_as<Handle>(param2);
 			SetPanelTitle(panel, buffer);
 		}
 		
@@ -1768,7 +1771,7 @@ public MenuHandler_ExchangePlayersMenu_ExchangeWith(Handle menu, MenuAction acti
 			char buffer[255];
 			Format(buffer, sizeof(buffer), "%T", "Exchange Players With Menu", param1);
 			
-			Handle panel = view_as<Handle>param2;
+			Handle panel = view_as<Handle>(param2);
 			SetPanelTitle(panel, buffer);
 		}
 		
@@ -2141,6 +2144,7 @@ public Action Ladder5on5SMP(client, cfg)
 	ServerCommand("sv_competitive_official_5v5 1");
 	ServerCommand("sv_pausable 1");
 	ServerCommand("sv_pure 1");
+	ServerCommand("sv_infinite_ammo 0");
 	ServerCommand("sv_pure_kick_clients 1");
 	ServerCommand("sv_pure_trace 0");
 	ServerCommand("sv_spawn_afk_bomb_drop_time 30");
@@ -2270,6 +2274,7 @@ public Action LoadConfigWarmup(client, cfg)
 	ServerCommand("sv_competitive_official_5v5 1");
 	ServerCommand("sv_pausable 1");
 	ServerCommand("sv_pure 1");
+	ServerCommand("sv_infinite_ammo 2");
 	ServerCommand("sv_pure_kick_clients 1");
 	ServerCommand("sv_pure_trace 0");
 	ServerCommand("sv_spawn_afk_bomb_drop_time 30");
